@@ -127,8 +127,8 @@ const AddUser = (props) => {
                         </CCol>
                       </CInputGroup>
                       <div className="d-grid">
-                        <CButton color="success" onClick={handleAddUser}>
-                          ساخت کاربر جدید
+                        <CButton color="success text-white" onClick={handleAddUser}>
+                          ارسال اطلاعات
                         </CButton>
                       </div>
                     </CForm>

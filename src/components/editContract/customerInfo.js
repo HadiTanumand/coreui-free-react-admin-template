@@ -24,11 +24,9 @@ import DatePicker from 'react-multi-date-picker'
 import persian from 'react-date-object/calendars/persian'
 import persian_fa from 'react-date-object/locales/persian_fa'
 import 'react-multi-date-picker/styles/layouts/mobile.css'
-import transition from 'react-element-popper/animations/transition'
-import TimePicker from 'react-multi-date-picker/plugins/time_picker'
 
 
-const CustomerInfo = ({formdata,setFormData,handleInput,handleSwitch})=>{
+const CustomerInfo = ({formdata,setFormData,handleInput,deleteOtherContract,updateOtherContract})=>{
   return(
     <>
      <CCol xs={12}>
@@ -41,11 +39,11 @@ const CustomerInfo = ({formdata,setFormData,handleInput,handleSwitch})=>{
               <CCol md={4}>
                 <CFormLabel htmlFor="validationServer01"> نام و نام خانوادگی داماد:</CFormLabel>
                 <CFormInput
-                  name="fullnameMan"
+                  name="full_name_man"
                   type="text"
                   id="validationServer01"
                   value={formdata.full_name_man ? formdata.full_name_man : ''}
-                  // onChange={handleInputValue}
+                  onChange={handleInput}
                   required
                 />
               </CCol>
@@ -53,13 +51,13 @@ const CustomerInfo = ({formdata,setFormData,handleInput,handleSwitch})=>{
                 <CFormLabel htmlFor="validationServerUsername">شماره تماس:</CFormLabel>
                 <CInputGroup className="has-validation">
                   <CFormInput
-                    name="mobbileMan"
-                    type="number"
+                    name="mobile_man"
+                    type="text"
                     id="validationServerUsername"
                     aria-describedby="inputGroupPrepend03"
                     required
                     value={formdata.mobile_man ? formdata.mobile_man : ''}
-                    // onChange={handleInputValue}
+                    onChange={handleInput}
                   />
                   <CInputGroupText id="inputGroupPrepend03">98+</CInputGroupText>
                   <CFormFeedback invalid>Please choose a username.</CFormFeedback>
@@ -69,25 +67,25 @@ const CustomerInfo = ({formdata,setFormData,handleInput,handleSwitch})=>{
               <CCol md={4}>
                 <CFormLabel htmlFor="validationServer01"> نام و نام خانوادگی عروس:</CFormLabel>
                 <CFormInput
-                  name="fullnameWoman"
+                  name="full_name_woman"
                   type="text"
                   id="validationServer01"
                   required
                   value={formdata.full_name_woman ? formdata.full_name_woman : ''}
-                  // onChange={handleInputValue}
+                  onChange={handleInput}
                 />
               </CCol>
               <CCol md={4}>
                 <CFormLabel htmlFor="validationServerUsername">شماره تماس:</CFormLabel>
                 <CInputGroup className="has-validation">
                   <CFormInput
-                    name="mobileWoman"
-                    type="number"
+                    name="mobile_woman"
+                    type="text"
                     id="validationServerUsername"
                     aria-describedby="inputGroupPrepend03"
                     required
                     value={formdata.full_name_man ? formdata.mobile_woman : ''}
-                    // onChange={handleInputValue}
+                    onChange={handleInput}
                   />
                   <CInputGroupText id="inputGroupPrepend03">98+</CInputGroupText>
                   <CFormFeedback invalid>Please choose a username.</CFormFeedback>
@@ -140,7 +138,7 @@ const CustomerInfo = ({formdata,setFormData,handleInput,handleSwitch})=>{
                   rows="3"
                   name="address"
                   value={formdata.address}
-                  // onChange={handleInputValue}
+                  onChange={handleInput}
                 ></CFormTextarea>
               </div>
             </CForm>
@@ -148,7 +146,7 @@ const CustomerInfo = ({formdata,setFormData,handleInput,handleSwitch})=>{
               color="primary"
               type="submit"
               className="mt-4"
-              //  onClick={handleBuildContract}
+               onClick={updateOtherContract}
             >
               ثبت ویرایش اطلاعات اولیه
             </CButton>
@@ -156,7 +154,7 @@ const CustomerInfo = ({formdata,setFormData,handleInput,handleSwitch})=>{
               color="danger"
               type="submit"
               className="mt-4 ms-3 text-white"
-              //  onClick={handleBuildContract}
+               onClick={deleteOtherContract}
             >
               حذف اطلاعات اولیه قرارداد
             </CButton>

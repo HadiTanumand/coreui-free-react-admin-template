@@ -193,7 +193,7 @@ const Dashboard = () => {
     <>
       <WidgetsDropdown />
       <CCard className="mb-4">
-        <CCardBody>
+        {/* <CCardBody>
           <CRow>
             <CCol sm={5}>
               <h4 id="traffic" className="card-title mb-0">
@@ -303,7 +303,7 @@ const Dashboard = () => {
               },
             }}
           />
-        </CCardBody>
+        </CCardBody> */}
         <CCardFooter>
           <CRow xs={{ cols: 1 }} md={{ cols: 5 }} className="text-center">
             {progressExample.map((item, index) => (
@@ -321,7 +321,7 @@ const Dashboard = () => {
 
       <WidgetsBrand withCharts />
 
-      <CRow>
+      {/* <CRow>
         <CCol xs>
           <CCard className="mb-4">
             <CCardHeader>Traffic {' & '} Sales</CCardHeader>
@@ -464,7 +464,7 @@ const Dashboard = () => {
             </CCardBody>
           </CCard>
         </CCol>
-      </CRow>
+      </CRow> */}
     </>
   )
 }

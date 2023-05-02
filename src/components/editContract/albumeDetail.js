@@ -1,4 +1,4 @@
-import React, { useEffect, useState  } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { CFormInput } from '@coreui/react'
 import { toast, ToastContainer } from 'react-toastify'
@@ -22,9 +22,21 @@ import {
 import axios from 'axios'
 import 'react-multi-date-picker/styles/layouts/mobile.css'
 
-
-const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , contract_id , deleteAlbume})=>{
-
+const AlbumeDetail = ({
+  albumePaperList,
+  getListAlbume,
+  albumeList,
+  getPaperList,
+  contract_id,
+  deleteAlbume,
+  setAlbumPaperList,
+  setAlbumList,
+  updateAlbume,
+  updatePaperAlbume,
+  deletePaperAlbume,
+  RegisterAlbumDetail,
+  RegisterAlbumPaperDetail
+}) => {
   const [albumType, setAlbumType] = useState({ albume_types: [] })
   const [albumSkin, setAlbumSkin] = useState({ albume_skins: [] })
   const [albumBag, setAlbumBag] = useState({ albume_bags: [] })
@@ -69,15 +81,40 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
       })
   }
 
+  const handleInput = (e , id) => {
+    const newState = albumeList.map(obj => {
+      // 👇️ if id equals 2, update country property
+      if ((obj.id) === id + 1) {
+        return {...obj, [e.target.name]: e.target.value};
+      }
 
-  return(
+      // 👇️ otherwise return the object as is
+      return obj;
+    });
+
+    setAlbumList(newState);
+  }
+  const handleInputPaper = (e , id) => {
+    const newState = albumePaperList.map(obj => {
+      // 👇️ if id equals 2, update country property
+      if ((obj.id) === id + 1) {
+        return {...obj, [e.target.name]: e.target.value};
+      }
+
+      // 👇️ otherwise return the object as is
+      return obj;
+    });
+
+    setAlbumPaperList(newState);
+  }
+
+  return (
     <>
-    <CCol xs={12}>
+      <CCol xs={12}>
         <CButton color="primary" type="submit" className="mt-4 mb-3" onClick={getListAlbume}>
           مشاهده لیست آلبوم های قرارداد
         </CButton>
         {albumeList.map((albume, index) => {
-
           return (
             <>
               <CCard className="mb-4">
@@ -89,19 +126,15 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
                     <CCol md={4}>
                       <CFormLabel htmlFor="validationServer04"> نوع آلبوم</CFormLabel>
                       <CFormSelect
-                        // onChange={(e) => {
-                        //   setformdata({
-                        //     ...formdata,
-                        //     type_id: Number(e.target.value) + 1,
-                        //   })
-                        // }}
+                        onChange={(e)=>handleInput(e,index)}
+                        name="type_id"
                         value={albume.type_id}
                         required
                       >
                         {/* <option>انتخاب کنید</option> */}
                         {albumType.albume_types.map((a, index) => {
-                    return <option value={index}>{a.title}</option>
-                  })}
+                          return <option value={index + 1}>{a.title}</option>
+                        })}
                       </CFormSelect>
                     </CCol>
                     <CCol md={4}>
@@ -109,19 +142,14 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
                         سایز آلبوم
                       </CFormLabel>
                       <CFormSelect
-                      // onChange={(e) => {
-                      //   setformdata({
-                      //     ...formdata,
-                      //     albume_size_id: Number(e.target.value) + 1,
-                      //   })
-                      // }}
-                      value={albume.albume_size_id}
-                    
+                        onChange={(e)=>handleInput(e,index)}
+                        name="albume_size_id"
+                        value={albume.albume_size_id}
                       >
                         {/* <option>انتخاب کنید</option> */}
                         {objSize.object_sizes.map((a, index) => {
-                    return <option value={index}>{a.ob_size}</option>
-                  })}
+                          return <option value={index + 1}>{a.ob_size}</option>
+                        })}
                       </CFormSelect>
                     </CCol>
                     <CCol md={4}>
@@ -131,13 +159,8 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
                       <CFormInput
                         className="shadow"
                         type="number"
-                        // value={formdata.number_of_papers}
-                        // onChange={(e) => {
-                        //   setformdata({
-                        //     ...formdata,
-                        //     number_of_papers: e.target.value,
-                        //   })
-                        // }}
+                        onChange={(e)=>handleInput(e,index)}
+                        name="number_of_papers"
                         value={albume.number_of_papers}
                         required
                       />
@@ -149,19 +172,15 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
                     <CCol md={4}>
                       <CFormLabel htmlFor="validationServer04"> جنس آلبوم</CFormLabel>
                       <CFormSelect
-                        // onChange={(e) => {
-                        //   setformdata({
-                        //     ...formdata,
-                        //     skin_id: Number(e.target.value) + 1,
-                        //   })
-                        // }}
+                       onChange={(e)=>handleInput(e,index)}
+                        name="skin_id"
                         required
                         value={albume.skin_id}
                       >
                         {/* <option>انتخاب کنید</option> */}
                         {albumSkin.albume_skins.map((a, index) => {
-                    return <option value={index}>{a.title}</option>
-                  })}
+                          return <option value={index + 1}>{a.title}</option>
+                        })}
                       </CFormSelect>
                     </CCol>
                     <CCol md={4}>
@@ -169,18 +188,13 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
                         کیف آلبوم
                       </CFormLabel>
                       <CFormSelect
-                      // onChange={(e) => {
-                      //   setformdata({
-                      //     ...formdata,
-                      //     bag_id: Number(e.target.value) + 1,
-                      //   })
-                      // }}
-                      value={albume.bag_id}
-                      >
+                       onChange={(e)=>handleInput(e,index)} 
+                      name="bag_id" 
+                      value={albume.bag_id}>
                         <option value={-1}>نیاز ندارد</option>
                         {albumBag.albume_bags.map((a, index) => {
-                    return <option value={index}>{a.title}</option>
-                  })}
+                          return <option value={index + 1}>{a.title}</option>
+                        })}
                       </CFormSelect>
                     </CCol>
                     <CCol md={4}>
@@ -188,31 +202,40 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
                         سایز کیف مسافرتی
                       </CFormLabel>
                       <CFormSelect
-                      // onChange={(e) => {
-                      //   setformdata({
-                      //     ...formdata,
-                      //     travel_album_size_id: Number(e.target.value) + 1,
-                      //   })
-                      // }}
-                      value={albume.travel_album_size_id}
+                        onChange={(e)=>handleInput(e,index)}
+                        name="travel_album_size_id"
+                        value={albume.travel_album_size_id}
                       >
                         {/* <option>انتخاب کنید</option> */}
                         {objSize.object_sizes.map((a, index) => {
-                    return <option value={index}>{a.ob_size}</option>
-                  })}
+                          return <option value={index + 1}>{a.ob_size}</option>
+                        })}
                       </CFormSelect>
                     </CCol>
                   </CForm>
-                  <CButton color="success" type="submit" className="mt-4 text-white">
-                    ثبت ویرایش
-                  </CButton>
                   <CButton 
-                  color="danger" 
-                  type="submit" 
-                  className="mt-4 ms-3 text-white"
-                  onClick={()=>deleteAlbume(albume.id)}
+                  color="success"
+                   type="submit"
+                    className="mt-4 text-white"
+                    onClick={()=>RegisterAlbumDetail(index)}
+                    >
+                    ثبت جدید
+                  </CButton>
+                  <CButton
+                    color="primary"
+                    type="submit"
+                    className="mt-4 ms-3 text-white"
+                    onClick={()=>updateAlbume(index , albume.id)}
                   >
-                     حذف آلبوم
+                    ویرایش
+                  </CButton>
+                  <CButton
+                    color="danger"
+                    type="submit"
+                    className="mt-4 ms-3 text-white"
+                    onClick={() => deleteAlbume(albume.id)}
+                  >
+                    حذف آلبوم
                   </CButton>
                 </CCardBody>
                 <CCol md={4}>
@@ -220,31 +243,28 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
                     color="primary"
                     type="submit"
                     className="mt-4 mb-3 ms-3"
-                    onClick={()=>getPaperList(albume.id)}
+                    onClick={() => getPaperList(albume.id)}
                   >
                     مشاهده ی کاغذهای آلبوم
                   </CButton>
                 </CCol>
-                {albumePaperList.map(() => {
+                {albumePaperList.map((paper, index) => {
                   return (
                     <>
                       <CCardBody className="m-2 mb-3  border rounded bg-light">
                         <CForm className="row g-3 needs-validation">
                           <CCol md={4}>
-                            <CFormLabel htmlFor="validationServer04"> نوع صفحه</CFormLabel>
+                            <CFormLabel htmlFor="validationServer04">{paper.id}نوع صفحه</CFormLabel>
                             <CFormSelect
-                              // onChange={(e) => {
-                              //   setformdata({
-                              //     ...formdata,
-                              //     paper_type_id: Number(e.target.value) + 1,
-                              //   })
-                              // }}
+                               onChange={(e)=>handleInputPaper(e,index)}
+                              name="paper_type_id"
+                              value={paper.paper_type_id}
                               required
                             >
                               {/* <option>انتخاب کنید</option> */}
-                              {/* {paperType.paper_types.map((a, index) => {
-                    return <option value={index}>{a.title}</option>
-                  })} */}
+                              {paperType.paper_types.map((a, index) => {
+                                return <option value={index + 1}>{a.title}</option>
+                              })}
                             </CFormSelect>
                           </CCol>
                           <CCol md={4}>
@@ -253,12 +273,9 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
                             </CFormLabel>
                             <CFormInput
                               type="number"
-                              // onChange={(e) => {
-                              //   setformdata({
-                              //     ...formdata,
-                              //     number_of_papers: e.target.value,
-                              //   })
-                              // }}
+                              value={paper.number_of_paper}
+                              onChange={(e)=>handleInputPaper(e,index)}
+                              name="number_of_paper"
                               className="shadow"
                             />
                           </CCol>
@@ -266,7 +283,7 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
                         <CCol md={4} className="mt-3">
                           <CButton
                             color="success"
-                            // onClick={RegisterAlbumPaperDetail}
+                            onClick={()=>RegisterAlbumPaperDetail(albume.id , index)}
                             type="submit"
                             className="m-3 text-white"
                           >
@@ -274,7 +291,7 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
                           </CButton>
                           <CButton
                             color="primary"
-                            // onClick={RegisterAlbumPaperDetail}
+                            onClick={()=>updatePaperAlbume(albume.id , paper.id , index)}
                             type="submit"
                             className="m-3"
                           >
@@ -282,7 +299,7 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
                           </CButton>
                           <CButton
                             color="danger"
-                            // onClick={RegisterAlbumPaperDetail}
+                            onClick={()=>deletePaperAlbume(paper.id)}
                             type="submit"
                             className="m-3 text-white"
                           >
@@ -302,4 +319,4 @@ const AlbumeDetail = ({albumePaperList,getListAlbume,albumeList,getPaperList , c
   )
 }
 
-export default AlbumeDetail;
+export default AlbumeDetail

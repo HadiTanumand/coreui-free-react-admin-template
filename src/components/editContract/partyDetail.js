@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { CFormInput } from '@coreui/react'
-import { toast, ToastContainer } from 'react-toastify'
 import {
   CButton,
   CCard,
@@ -19,7 +17,6 @@ import {
   CFormTextarea,
   CRow,
 } from '@coreui/react'
-import axios from 'axios'
 import DatePicker from 'react-multi-date-picker'
 import persian from 'react-date-object/calendars/persian'
 import persian_fa from 'react-date-object/locales/persian_fa'
@@ -28,7 +25,7 @@ import transition from 'react-element-popper/animations/transition'
 import TimePicker from 'react-multi-date-picker/plugins/time_picker'
 
 
-const PartyDetail = ({formdata,setFormData,handleInput,handleSwitch})=>{
+const PartyDetail = ({formdata,setFormData,handleInput,handleSwitch,deleteContract,updateContract})=>{
   return(
     <>
     <CCol xs={12}>
@@ -415,10 +412,20 @@ const PartyDetail = ({formdata,setFormData,handleInput,handleSwitch})=>{
                 ></CFormTextarea>
               </div>
             </CForm>
-            <CButton color="primary" type="submit" className="mt-4">
+            <CButton 
+            color="primary"
+             type="submit"
+              className="mt-4"
+              onClick={updateContract}
+              >
               ثبت ویرایش اطلاعات تکمیلی
             </CButton>
-            <CButton color="danger" type="submit" className="mt-4 ms-3 text-white">
+            <CButton 
+            color="danger"
+             type="submit"
+              className="mt-4 ms-3 text-white"
+              onClick={deleteContract}
+              >
               حذف اطلاعات تکمیلی
             </CButton>
           </CCardBody>
