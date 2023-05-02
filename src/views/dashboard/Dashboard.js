@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useContext, useEffect} from 'react'
 
 import {
   CAvatar,
@@ -44,6 +44,9 @@ import {
   cilUserFemale,
 } from '@coreui/icons'
 
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from 'src/context/auth/AuthContext'
+
 import avatar1 from 'src/assets/images/avatars/1.jpg'
 import avatar2 from 'src/assets/images/avatars/2.jpg'
 import avatar3 from 'src/assets/images/avatars/3.jpg'
@@ -56,6 +59,14 @@ import WidgetsDropdown from '../widgets/WidgetsDropdown'
 
 const Dashboard = () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+  const {dispatch} = useContext(AuthContext);
+  const navigate = useNavigate();
+  useEffect(()=>{
+      dispatch({
+        type : 'check',
+        payload : navigate
+      })
+  } , [])
 
   const progressExample = [
     { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },

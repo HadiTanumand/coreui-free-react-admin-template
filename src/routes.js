@@ -2,6 +2,9 @@ import React from 'react'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Contract = React.lazy(() => import('./components/ownComponents/Contract'))
+const ContractList = React.lazy(() => import('./components/contractList/contractList'))
+const AddUser = React.lazy(() => import('./components/addUser/addUser'))
+const editContract = React.lazy(() => import('./components/editContract/editContract'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 
@@ -55,6 +58,9 @@ const routes = [
   { path: '/', exact: true, name: 'صفحه اصلی' },
   { path: '/dashboard', name: 'داشبورد', element: Dashboard },
   { path: '/Contract', name: 'ثبت قرارداد', element: Contract },
+  { path: '/ContractList', name: 'لیست قراردادها', element: ContractList },
+  { path: '/editContract/:id', name: 'ویرایش قرارداد', element: editContract },
+  { path: '/AddUser', name: 'افزودن کاربر', element: AddUser },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
   { path: '/theme/typography', name: 'Typography', element: Typography },

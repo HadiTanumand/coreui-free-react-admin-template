@@ -88,7 +88,7 @@ const CustomStyles = () => {
       </CCol>
       <CCol xs={12}>
         <CButton color="primary" type="submit">
-          Submit form
+          Submit 1
         </CButton>
       </CCol>
     </CForm>
@@ -160,7 +160,7 @@ const BrowserDefaults = () => {
       </CCol>
       <CCol xs={12}>
         <CButton color="primary" type="submit">
-          Submit form
+          Submit 2
         </CButton>
       </CCol>
     </CForm>
@@ -242,7 +242,7 @@ const Tooltips = () => {
       </CCol>
       <CCol xs={12} className="position-relative">
         <CButton color="primary" type="submit">
-          Submit form
+          Submit 3
         </CButton>
       </CCol>
     </CForm>
@@ -471,7 +471,7 @@ const Validation = () => {
 
                 <div className="mb-3">
                   <CButton type="submit" color="primary" disabled>
-                    Submit form
+                    Submit 
                   </CButton>
                 </div>
               </CForm>

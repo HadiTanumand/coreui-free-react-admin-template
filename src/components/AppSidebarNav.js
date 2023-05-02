@@ -25,6 +25,7 @@ export const AppSidebarNav = ({ items }) => {
     const Component = component
     return (
       <Component
+      className='text-white'
         {...(rest.to &&
           !rest.items && {
             component: NavLink,
