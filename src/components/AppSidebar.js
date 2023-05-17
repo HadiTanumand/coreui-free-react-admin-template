@@ -28,7 +28,7 @@ const AppSidebar = () => {
   return (
     <>
       <CSidebar
-      className='bg-info'
+     
         position="fixed"
         unfoldable={unfoldable}
         visible={sidebarShow}
@@ -42,7 +42,7 @@ const AppSidebar = () => {
         </CSidebarBrand>
         <CSidebarNav>
           <SimpleBar>
-            <AppSidebarNav  items={navigation} />
+            <AppSidebarNav items={navigation} />
           </SimpleBar>
         </CSidebarNav>
         {/* <CSidebarToggler

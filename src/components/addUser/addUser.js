@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useContext,useEffect } from 'react'
 import { CFormInput, CInputGroup, CInputGroupText } from '@coreui/react'
 import { toast, ToastContainer } from 'react-toastify'
 import {
@@ -20,15 +20,30 @@ import {
 import 'react-multi-date-picker/styles/layouts/mobile.css'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser, cilPhone } from '@coreui/icons'
+import { AuthContext } from 'src/context/auth/AuthContext'
+import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 const AddUser = (props) => {
+  const {dispatch} = useContext(AuthContext);
+  const navigate = useNavigate();
   const [mobile, setMobile] = useState('')
   const [customerName, setCustomerName] = useState('')
   const [password, setPassword] = useState('')
   const [userType, setUserType] = useState('7')
   const token = localStorage.getItem('token ateliyeh')
-  const currentUser = localStorage.getItem('curent_user')
+  const currentUser = localStorage.getItem('curent_user');
+
+
+
+
+    ///////////////////////////   Use Effect for check token
+    useEffect(()=>{
+      dispatch({
+        type : 'check',
+        payload : navigate
+      })
+  } , [])
 
   const handleAddUser = () => {
     const data = {

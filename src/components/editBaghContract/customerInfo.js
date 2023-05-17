@@ -39,7 +39,7 @@ const CustomerInfo = ({formdata,
      <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>
-            <strong> اطلاعات مشتری</strong>
+            <strong>  اطلاعات مشتری قرارداد باغ</strong>
           </CCardHeader>
           <CCardBody>
             <CForm className="row g-3 needs-validation">

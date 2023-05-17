@@ -191,7 +191,7 @@ const PersonalInfo = (props) => {
     setSpinner(true)
     const data = {
       api_key: localStorage.getItem('api_key'),
-      contract_type: `1-${helpContractName}-${subTwocontract}`,
+      contract_type: `${helpContractName}-${subcontract}-${subTwocontract}`,
       current_user: currentUser,
       customer_id: props.formdata.customer_id,
     }
@@ -232,7 +232,7 @@ const PersonalInfo = (props) => {
       <CCol xs={12} className="shadow">
         <CCard className="mb-4">
           <CCardHeader>
-            <strong>انتخاب مشتری برای ثبت قرارداد جدید</strong>
+            <strong>انتخاب مشتری برای ثبت قرارداد جدید باغ</strong>
           </CCardHeader>
           <CCardBody>
             <CRow>
@@ -279,7 +279,7 @@ const PersonalInfo = (props) => {
           </CCardBody>
         </CCard>
       </CCol>
-      <CCol xs={12} className="shadow">
+      {/* <CCol xs={12} className="shadow">
         <CCard className="mb-4">
           <CCardHeader>
             <strong>فرم اطلاعات کلی قرارداد</strong>
@@ -288,7 +288,7 @@ const PersonalInfo = (props) => {
             <p className="text-medium-emphasis"></p>
             <CForm className="row g-3 needs-validation">
               <CCol md={4}>
-                <CFormLabel htmlFor="validationServer01"> نوع جشن</CFormLabel>
+                <CFormLabel htmlFor="validationServer01"> قرارداد</CFormLabel>
                 <CFormSelect
                   id="validationServer01"
                   className="shadow"
@@ -297,40 +297,64 @@ const PersonalInfo = (props) => {
                   onChange={(e) => {
                     console.log('e.target  ' + e.target.value)
                     setHelpContractName(e.target.value)
+                    setSubcontract(1)
+                    setSubTowcontract(1)
                   }}
                 >
-                  {/* {contractType.map((c, index) => {
+                  {contractType.map((c, index) => {
                     return <option value={index + 1}>{c.name}</option>
-                  })} */}
-                  <option value={1}>جشن عروسی</option>
-                  <option value={2}>جشن نامزدی</option>
-                  <option value={3}>جشن محضر</option>
-                  <option value={4}>جشن های جانبی عروسی</option>
-                  <option value={5}>خدمات دیگر</option>
+                  })}
                 </CFormSelect>
               </CCol>
               <CCol md={4}>
-              <CFormLabel htmlFor="validationServer03" required>
-                  {helpContractName != 3 ? '' : 'آپشن'}
+                <CFormLabel htmlFor="validationServer02" required>
+                  نوع قرارداد
                 </CFormLabel>
                 <CFormSelect
-                  hidden={helpContractName != 3}
                   id="validationServer02"
                   className="shadow"
-                  value={subTwocontract}
+                  value={subcontract}
                   onChange={(e) => {
+                    setSubcontract(e.target.value)
+                    setSubTowcontract(1)
                     console.log(e.target.value)
-                    setSubTowcontract(e.target.value)
                   }}
                 >
-                 <option value={1}>محضرآتلیه</option>
-                  <option value={2}>محضرهای دیگر</option>
+                  {contractType[helpContractName -1].type.map((c, index) => {
+                    return <option value={index + 1}>{c.name}</option>
+                  })}
+                </CFormSelect>
+              </CCol>
+              <CCol md={4}>
+                <CFormLabel htmlFor="validationServer03" required>
+                  {subcontract == 3 && helpContractName != 3 ? 'آپشن' : ''}
+                </CFormLabel>
+                <CFormSelect
+                  hidden={subcontract == 3 && helpContractName != 3 ? false : true}
+                  value={subTwocontract}
+                  onChange={(e) => {
+                    setSubTowcontract(e.target.value)
+                    // console.log(
+                    //   'gesmat1 :' +
+                    //     helpContractName +
+                    //     '   ghesmat2' +
+                    //     subcontract +
+                    //     '   ghesmat3' +
+                    //     e.target.value,
+                    // )
+                  }}
+                  id="validationServer03"
+                  className="shadow"
+                >
+                  {contractType[helpContractName -1].type[subcontract -1].data.map((d, index) => {
+                    return <option value={index + 1}>{d.name}</option>
+                  })}
                 </CFormSelect>
               </CCol>
             </CForm>
           </CCardBody>
         </CCard>
-      </CCol>
+      </CCol> */}
       <CCol xs={12} className="shadow">
         <CCard className="mb-4">
           <CCardHeader>

@@ -130,169 +130,106 @@ const PartyService = (props) => {
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>
-            <strong>اطلاعات تکمیلی و خدماتی قرارداد</strong>
+            <strong> اطلاعات کلی فرمالیته</strong>
           </CCardHeader>
           <CCardBody>
             <CForm className="row g-3 needs-validation">
-              <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.f_building}
-                  onClick={handleSwitch}
-                  label="فیلم برداری عمارت"
-                  name="f_building"
+              {/* <CCol md={4}>
+                <CFormLabel htmlFor="validationServer01"> تعداد دوربین جشن:</CFormLabel>
+                <CFormInput
+                min={0}
+                  type="number"
+                  name="number_of_camera"
+                  value={props.formdata.number_of_camera}
+                  onChange={handleInput}
                 />
               </CCol>
               <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  label="فیلم برداری محضر"
-                  checked={props.formdata.f_mahzar}
-                  name="f_mahzar"
-                  onClick={handleSwitch}
+                <CFormLabel htmlFor="validationServer01"> کاربر آقا:</CFormLabel>
+                <CFormInput
+                min={0}
+                  type="number"
+                  name="number_of_camera_man"
+                  value={props.formdata.number_of_camera_man}
+                  onChange={handleInput}
                 />
               </CCol>
               <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  label="عکاسی کامل عمارت"
-                  checked={props.formdata.p_building}
-                  name="p_building"
-                  onClick={handleSwitch}
+                <CFormLabel htmlFor="validationServer01"> کاربر خانم:</CFormLabel>
+                <CFormInput
+                  type="number"
+                  name="number_of_cameras_woman"
+                  value={props.formdata.number_of_cameras_woman}
+                  onChange={handleInput}
                 />
               </CCol>
               <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  label="عکاسی لابی"
-                  checked={props.formdata.p_lobby}
-                  name="p_lobby"
-                  onClick={handleSwitch}
+                <CFormLabel htmlFor="validationServer01">تعداد کرین جشن:</CFormLabel>
+                <CFormInput
+                min={0}
+                  type="number"
+                  name="number_of_crane"
+                  value={props.formdata.number_of_crane}
+                  onChange={handleInput}
                 />
               </CCol>
               <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  label="عکاسی طبقه اول"
-                  checked={props.formdata.p_first_floor}
-                  name="p_first_floor"
-                  onClick={handleSwitch}
+                <CFormLabel htmlFor="validationServer01">کرین آقا:</CFormLabel>
+                <CFormInput
+                min={0}
+                  type="number"
+                  name="number_of_crane_man"
+                  value={props.formdata.number_of_crane_man}
+                  onChange={handleInput}
                 />
               </CCol>
               <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.p_mahzar}
-                  label="عکاسی محضر"
-                  name="p_mahzar"
-                  onClick={handleSwitch}
+                <CFormLabel htmlFor="validationServer01">کرین خانم:</CFormLabel>
+                <CFormInput
+                min={0}
+                  type="number"
+                  name="number_of_crane_woman"
+                  value={props.formdata.number_of_crane_woman}
+                  onChange={handleInput}
                 />
               </CCol>
               <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.p_house_flower}
-                  label="عکاسی گلخانه"
-                  name="p_house_flower"
-                  onClick={handleSwitch}
+                <CFormLabel htmlFor="validationServer01"> تعداد استابلایزر:</CFormLabel>
+                <CFormInput
+                min={0}
+                  type="number"
+                  name="stop_laser"
+                  value={props.formdata.stop_laser}
+                  onChange={handleInput}
                 />
-              </CCol>
+              </CCol> */}
               <CCol md={4}>
+                <CFormLabel htmlFor="validationServer01"> </CFormLabel>
                 <CFormSwitch
                   size="xl"
-                  checked={props.formdata.p_second_floor}
-                  label="عکاسی طبقه دوم"
-                  name="p_second_floor"
-                  onClick={handleSwitch}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.p_roof_garden}
-                  label="عکاسی روف گاردن"
-                  name="p_roof_garden"
+                  label=" پارت صبح"
+                  checked={props.formdata.stop_laser_man}
+                  name="stop_laser_man"
                   onClick={handleSwitch}
                 />
               </CCol>
               <CCol md={4}>
+                <CFormLabel htmlFor="validationServer01"> </CFormLabel>
                 <CFormSwitch
                   size="xl"
-                  checked={props.formdata.p_hani_moon}
-                  label="عکاسی هانی مون"
-                  name="p_hani_moon"
+                  label=" دیزاین"
+                  checked={props.formdata.stop_laser_man}
+                  name="stop_laser_man"
                   onClick={handleSwitch}
                 />
               </CCol>
               <CCol md={4}>
+                <CFormLabel htmlFor="validationServer01"> </CFormLabel>
                 <CFormSwitch
                   size="xl"
-                  checked={props.formdata.f_dowry}
-                  label="فیلم برداری جهیزیه"
-                  name="f_dowry"
-                  onClick={handleSwitch}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.f_beauty_shop}
-                  label="فیلم برداری آرایشگاه"
-                  name="f_beauty_shop"
-                  onClick={handleSwitch}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.heli_shot_entry}
-                  label="هلی شات ورود"
-                  name="heli_shot_entry"
-                  onClick={handleSwitch}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.heli_shot_out}
-                  label="هلی شات خروج"
-                  onClick={handleSwitch}
-                  name="heli_shot_out"
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.heli_shot_celebration_woman}
-                  label="هلی شات قسمت  بانوان"
-                  name="heli_shot_celebration_woman"
-                  onClick={handleSwitch}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.heli_shot_celebration_man}
-                  label="هلی شات قسمت آقایان"
-                  name="heli_shot_celebration_man"
-                  onClick={handleSwitch}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.t_celebration_man}
-                  label="عکاسی جشن قسمت آقایان"
-                  name="t_celebration_man"
-                  onClick={handleSwitch}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.t_celebration_woman}
-                  label="عکاسی جشن قسمت بانوان"
-                  name="t_celebration_woman"
+                  checked={props.formdata.stop_laser_woman}
+                  label=" لباس عروس"
+                  name="stop_laser_woman"
                   onClick={handleSwitch}
                 />
               </CCol>
@@ -386,107 +323,9 @@ const PartyService = (props) => {
                   onClick={handleSwitch}
                 />
               </CCol>
-            </CForm>
-          </CCardBody>
-        </CCard>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong> </strong>
-          </CCardHeader>
-          <CCardBody>
-            <CForm className="row g-3 needs-validation">
-              <CCol md={4}>
-                <CFormLabel htmlFor="validationServer01"> تعداد دوربین جشن:</CFormLabel>
-                <CFormInput
-                min={0}
-                  type="number"
-                  name="number_of_camera"
-                  value={props.formdata.number_of_camera}
-                  onChange={handleInput}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormLabel htmlFor="validationServer01"> کاربر آقا:</CFormLabel>
-                <CFormInput
-                min={0}
-                  type="number"
-                  name="number_of_camera_man"
-                  value={props.formdata.number_of_camera_man}
-                  onChange={handleInput}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormLabel htmlFor="validationServer01"> کاربر خانم:</CFormLabel>
-                <CFormInput
-                  type="number"
-                  name="number_of_cameras_woman"
-                  value={props.formdata.number_of_cameras_woman}
-                  onChange={handleInput}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormLabel htmlFor="validationServer01">تعداد کرین جشن:</CFormLabel>
-                <CFormInput
-                min={0}
-                  type="number"
-                  name="number_of_crane"
-                  value={props.formdata.number_of_crane}
-                  onChange={handleInput}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormLabel htmlFor="validationServer01">کرین آقا:</CFormLabel>
-                <CFormInput
-                min={0}
-                  type="number"
-                  name="number_of_crane_man"
-                  value={props.formdata.number_of_crane_man}
-                  onChange={handleInput}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormLabel htmlFor="validationServer01">کرین خانم:</CFormLabel>
-                <CFormInput
-                min={0}
-                  type="number"
-                  name="number_of_crane_woman"
-                  value={props.formdata.number_of_crane_woman}
-                  onChange={handleInput}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormLabel htmlFor="validationServer01"> تعداد استابلایزر:</CFormLabel>
-                <CFormInput
-                min={0}
-                  type="number"
-                  name="stop_laser"
-                  value={props.formdata.stop_laser}
-                  onChange={handleInput}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormLabel htmlFor="validationServer01"> </CFormLabel>
-                <CFormSwitch
-                  size="xl"
-                  label="استابلایزر مرد"
-                  checked={props.formdata.stop_laser_man}
-                  name="stop_laser_man"
-                  onClick={handleSwitch}
-                />
-              </CCol>
-              <CCol md={4}>
-                <CFormLabel htmlFor="validationServer01"> </CFormLabel>
-                <CFormSwitch
-                  size="xl"
-                  checked={props.formdata.stop_laser_woman}
-                  label="استابلایزر خانم"
-                  name="stop_laser_woman"
-                  onClick={handleSwitch}
-                />
-              </CCol>
               <CCol md={6} className="mt-5">
                 <CFormLabel className="ml-4" htmlFor="validationServer01">
-                  تاریخ وساعت مراسم:
+                  تاریخ وساعت :
                 </CFormLabel>
                 <DatePicker
                   value={dateValue}
@@ -510,7 +349,7 @@ const PartyService = (props) => {
                 <span className="ms-3" style={{ fontSize: '25px' }}>{props.formdata.celebration_time}</span>
               </CCol>
               <div className="mb-3 mt-5">
-                <CFormLabel htmlFor="exampleFormControlTextarea1">آدرس مکان مراسم :</CFormLabel>
+                <CFormLabel htmlFor="exampleFormControlTextarea1">  توضیحات :</CFormLabel>
                 <CFormTextarea
                   name="celebration_address"
                   value={props.formdata.celebration_address}

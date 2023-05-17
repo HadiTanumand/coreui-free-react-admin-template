@@ -112,7 +112,7 @@ const ContractList = () => {
   }
 
   const updateContract = (id) => {
-    navigate(`/editContract/${id}`)
+    navigate(`/editBaghContract/${id}`)
   }
 
   const deleteContract = (id) => {

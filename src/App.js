@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react'
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, HashRouter, Route, Routes } from 'react-router-dom'
 import './scss/style.scss'
 import 'react-toastify/dist/ReactToastify.css'
 import AuthContextProvider from './context/auth/AuthContext'
@@ -23,6 +23,7 @@ class App extends Component {
   render() {
     return (
       <HashRouter>
+        
         <Suspense fallback={loading}>
           <AuthContextProvider>
             <Routes>

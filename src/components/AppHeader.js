@@ -36,12 +36,14 @@ const AppHeader = () => {
         </CHeaderBrand>
         <CHeaderNav className="d-none d-md-flex me-auto">
           <CNavItem>
-            <CNavLink to="/dashboard" component={NavLink}>
+            
+            {/* <CNavLink to="/dashboard" component={NavLink}>
               صفحه اصلی
-            </CNavLink>
+            </CNavLink> */}
           </CNavItem>
           <CNavItem>
-            <CNavLink href="#">لیست قراردادها</CNavLink>
+            پنل اعضا آتلیه سحرسالاری
+            {/* <CNavLink href="#">لیست قراردادها</CNavLink> */}
           </CNavItem>
           <CNavItem>
             {/* <CNavLink href="#">Settings</CNavLink> */}

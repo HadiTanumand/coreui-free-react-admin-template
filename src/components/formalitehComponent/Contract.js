@@ -103,9 +103,6 @@ const Contract = () => {
       nextStep={nextStep} setNextStep={setNextStep}/>
     }
     if (page === 1) {
-      return <CustomerService formdata={formData} setformdata={setFormData} />
-    }
-    if (page === 2) {
       return <PartyService formdata={formData} setformdata={setFormData} />
     }
     else{
@@ -116,13 +113,13 @@ const Contract = () => {
   return (
     <>
       <div className="container bg-white p-4 ">
-        <div className="mt-3">
+        {/* <div className="mt-3">
           <CProgress height={35} className="mb-4">
             <CProgressBar color="success" variant="striped" animated value={page === 25 ? 0 : 25*(page+1)}>
             {page === 25 ? 0 : 25*(page+1)}%
             </CProgressBar >
           </CProgress>
-        </div>
+        </div> */}
         <div className="m-4">{addPage()}</div>
 
         <div>
